@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'book_model.dart';
 import 'book_detail_page.dart';
+import 'login_page.dart'; // Jangan lupa import halaman login agar LoginPage dikenali
 
 class LibraryPage extends StatelessWidget {
   const LibraryPage({super.key});
@@ -12,6 +13,17 @@ class LibraryPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Library - Daftar Buku'),
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -48,7 +60,6 @@ class LibraryPage extends StatelessWidget {
                         borderRadius: const BorderRadius.vertical(
                           top: Radius.circular(8),
                         ),
-                        // Pengecekan gambar lokal atau web
                         child: book.imageUrl.startsWith('assets/')
                             ? Image.asset(
                                 book.imageUrl,
@@ -107,5 +118,5 @@ class LibraryPage extends StatelessWidget {
         ),
       ),
     );
-  }
-}
+  } 
+} 
